@@ -5,35 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="/img/icon/male-clothes.png" type="image/x-icon">
+    <link rel="icon" href="{{ asset('frontend/img/icon/male-clothes.png') }}" type="image/x-icon">
     <title>Maslis Shop . | Sign-In</title>
 
-    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('frontend/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
 
-    <link rel="stylesheet" href="{{asset('css/styles.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend/css/styles.css') }}" type="text/css">
 
 <body>
     <div class="main">
-
-
-
         <section class="sign-in">
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
-                        <figure><img src="img/signin-image.jpg" alt="sing up image"></figure>
-                        <a href="{{route('signup.show')}}" class="signup-image-link">Create an account</a>
+                        <figure><img src="{{ asset('frontend/img/signin-image.jpg') }}" alt="sing up image"></figure>
+                        <a href="{{ route('signup.show') }}" class="signup-image-link">Create an account</a>
                     </div>
                     <div class="signin-form">
+                        @component('components.success_singin')
+                        @endcomponent
+                        
                         <h2 class="form-title">Sign In</h2>
-                        <form method="POST" class="register-form" id="login-form">
+                        <form method="POST" class="register-form" id="login-form"
+                            action="{{ route('signin.submit') }}">
+                            @csrf
                             <div class="form-group">
-                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="your_name" id="your_name" placeholder="Your Name" />
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" name="email" id="email" placeholder="Your Email" required/>
                             </div>
                             <div class="form-group">
-                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="your_pass" id="your_pass" placeholder="Password" />
+                                <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="password" placeholder="Password" required />
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
@@ -59,10 +62,11 @@
         </section>
     </div>
 
-    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('js/mains.js')}}"></script>
-
-
+    <script src="{{ asset('frontend/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/mains.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
 </body>
